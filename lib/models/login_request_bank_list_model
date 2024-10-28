@@ -1,0 +1,30 @@
+class LoginRequestBankList {
+  final String id;
+  final String bankName;
+
+  LoginRequestBankList({
+    required this.id,
+    required this.bankName,
+  });
+
+  // Factory method to create an instance from a JSON object
+  factory LoginRequestBankList.fromJson(Map<String, dynamic> json) {
+    return LoginRequestBankList(
+      id: json['id'] as String,
+      bankName: json['bank_name'] as String,
+    );
+  }
+
+  // Method to convert an instance back to JSON
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'bank_name': bankName,
+    };
+  }
+}
+
+// Function to parse a list of banks from JSON data
+List<LoginRequestBankList> parseBankList(List<dynamic> data) {
+  return data.map((item) => LoginRequestBankList.fromJson(item)).toList();
+}
